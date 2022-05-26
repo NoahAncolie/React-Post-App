@@ -22,7 +22,7 @@ const Posts = () => {
     }, [jwtToken]);
 
     return (
-        <div className="front-body">
+        <div className="front-body post-div">
             <div>{Array.from(posts).map(post => (
                 <Post post={post} key={post.id} />
             ))}</div>

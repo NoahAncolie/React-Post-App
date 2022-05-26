@@ -19,14 +19,14 @@ const UserProfile = () => {
                 'Content-Type': 'application/json'
             }
         }).then((data) => { return data.json() }).then((data) => setUser(data))
-    }, [jwtToken, userId]);
+    }, [jwtToken, userId, user]);
 
     return (
         <div className="front-body">
             <div className='inside-body' style={{textAlign: "center"}}>
                 <h1>{user.username}</h1>
                 <br />
-                <p>{`${user.email}`}</p>
+                <p>{user.description}</p>
             </div>
         </div>
     )

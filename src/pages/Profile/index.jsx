@@ -17,8 +17,8 @@ const Profile = () => {
         let formData = new FormData(form)
         let datas = Object.fromEntries(formData)
 
-        if (!(datas.username && datas.email)) {
-            window.alert('Les champs doivent êtres remplis même si tu utilises un fake email (et oui je te vois)')
+        if (!(datas.username && datas.description)) {
+            window.alert('Les champs doivent êtres remplis.')
             return (0)
         }
 
@@ -44,7 +44,7 @@ const Profile = () => {
                     <div style={{ width: "100%", textAlign: "center" }} I>
                         <h1>{user.username}</h1>
                         <br />
-                        <p>{`${user.email}`}</p>
+                        <p>{user.description}</p>
                         <br /><br />
                         <Link to="/profile/edit">Modifier</Link>
                     </div>
@@ -52,7 +52,7 @@ const Profile = () => {
                     <Routes>
                         <Route path='/edit' element={<form className="form-container" id="edit-form" onSubmit={event => { event.preventDefault(); edit() }}>
                             <input type="text" placeholder="New Name" id="username" name="username" className='form-input' />
-                            <input type="text" placeholder="New Email" id="email" name="email" className='form-input' />
+                            <textarea type="text" placeholder="New Description" id="description" name="description" className='form-input' />
                             <input type="submit" value="edit the user" className='form-input submit-btn' />
                         </form>} />
                     </Routes>

@@ -9,9 +9,6 @@ const CreatePost = () => {
     jwtToken = jwtToken ? jwtToken : AppStore.getState().state.token
     let user = useSelector(state => state.user)
     user = user ? user : AppStore.getState().state.user
-    
-    console.log(user)
-
     const navigate = useNavigate()
 
     const create = () => {

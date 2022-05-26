@@ -11,10 +11,10 @@ const Post = ({ post }) => {
     jwtToken = jwtToken ? jwtToken : AppStore.getState().state.token
     let user = useSelector(state => state.user)
     user = user ? user : AppStore.getState().state.user
-    const [cleanedLikesArray, setClean] = useState(post.users_likes.filter(item => item.id !== user.id))
+    const [deleted, setDelete] = useState(false)
     const [likes, setLikes] = useState(post.like)
-    const [unlike, setLiking] = useState(Array.from(post.users_likes).filter(likeUser => likeUser.id === user.id).length > 0 ? true : false)
-    
+    const [unlike, setLiking] = useState(Array.from(post.users_likes).filter(likeUser => likeUser.id === user.id).length > 1 ? true : false)
+
     useEffect(() => {
         fetch(`http://localhost:1337/posts/${post.id}`, {
             method: 'put',
@@ -22,27 +22,39 @@ const Post = ({ post }) => {
                 'Authorization': `Bearer ${jwtToken}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ like: likes, users_likes: cleanedLikesArray })
+            body: JSON.stringify({ like: likes })
         })
-        console.log(post)
-    }, [likes, jwtToken, post, user, unlike])
+    }, [unlike, jwtToken, likes, post.id])
 
     const toggleLike = () => {
-        setClean(post.users_likes.filter(item => item.id !== user.id))
         unlike ? setLikes(likes - 1) : setLikes(likes + 1)
-        unlike ? setClean(cleanedLikesArray) : setClean(cleanedLikesArray.push(user))
         setLiking(!unlike)
     }
 
+    const deletePost = () => {
+        fetch(`http://localhost:1337/posts/${post.id}`, {
+            method: 'delete',
+            headers: {
+                'Authorization': `Bearer ${jwtToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ like: likes })
+        })
+        setDelete(true)
+    }
+
     return (
-        <div className="post">
-            <Link to={`/user/${post.user.id}`} className="post-name">{post.user.username}</Link>
-            <br /><br />
-            <div className="post-content">
-                <p>{post.text}</p>
-                <a href="/" onClick={event => {event.preventDefault(); toggleLike()}} className={unlike ? "heart-on like-link" : "heart-off like-link"}>{likes} Likes</a>
-            </div>
-        </div >
+        <>{deleted ? <></> :
+            <div className="post">
+                <Link to={`/user/${post.user.id}`} className="post-name">{post.user.username}</Link>
+                <br /><br />
+                <div className="post-content">
+                    <p>{post.text}</p>
+                    {user.id === post.user.id ? <a href="/" onClick={event => { event.preventDefault(); deletePost() }} className={"heart-on like-link"}>Delete</a> : <a href="/" onClick={event => { event.preventDefault(); toggleLike() }} className={unlike ? "heart-on like-link" : "heart-off like-link"}>{likes} Likes</a>}
+                </div>
+            </div >
+        }
+        </>
     )
 }
 
