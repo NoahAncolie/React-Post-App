@@ -49,13 +49,15 @@ const Profile = () => {
                         <Link to="/profile/edit">Modifier</Link>
                     </div>
                     <br />
-                    <Routes>
-                        <Route path='/edit' element={<form className="form-container" id="edit-form" onSubmit={event => { event.preventDefault(); edit() }}>
-                            <input type="text" placeholder="New Name" id="username" name="username" className='form-input' />
-                            <textarea type="text" placeholder="New Description" id="description" name="description" className='form-input' />
-                            <input type="submit" value="edit the user" className='form-input submit-btn' />
-                        </form>} />
-                    </Routes>
+                    <div className='center-form'>
+                        <Routes>
+                            <Route path='/edit' element={<form className="form-container" id="edit-form" onSubmit={event => { event.preventDefault(); edit() }}>
+                                <input type="text" placeholder="New Name" id="username" name="username" className='form-input' />
+                                <textarea type="text" placeholder="New Description" id="description" name="description" className='form-input' />
+                                <input type="submit" value="edit the user" className='form-input submit-btn' />
+                            </form>} />
+                        </Routes>
+                    </div>
                 </div>
             </div> :
             <div>Error 404 not Found</div>

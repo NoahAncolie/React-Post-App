@@ -23,7 +23,7 @@ const Posts = () => {
 
     return (
         <div className="front-body post-div">
-            <div>{Array.from(posts).map(post => (
+            <div className="frontPost">{Array.from(posts).map(post => (
                 <Post post={post} key={post.id} />
             ))}</div>
         </div>

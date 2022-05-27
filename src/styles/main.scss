@@ -108,6 +108,8 @@ a:active {
 
 .inside-body {
   margin-top: 50px;
+  max-width: 50vw;
+  justify-content: center;
 }
 
 button {
@@ -148,4 +150,16 @@ button {
 
 .post-text {
   padding: 0 35px 0 0;
+}
+
+.frontPost {
+  overflow-y: auto;
+  max-height: 90vh;
+  scrollbar-color: transparent transparent;
+}
+
+.center-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
