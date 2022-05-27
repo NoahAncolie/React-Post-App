@@ -1,9 +1,18 @@
+$main: #000F08;
+$second : #F46197;
+$second-lighter: #F8A0C0;
+$second-darker: #EE1B69;
+$second-transparent: #f46197c4;
+$third: #FFFDF7;
+
+/* #3a2d32 #ffe3dc #d30c7b */ 
+
 * {
   padding: 0;
   margin: 0;
-  background-color: #3a2d32;
-  color: #ffe3dc;
-  border-color: #ffe3dc !important;
+  background-color: $main;
+  color: $third;
+  border-color: $third !important;
   font-family: 'Spline Sans Mono', monospace;
 }
 
@@ -26,7 +35,7 @@
 }
 
 .form-input:focus {
-  outline: 2px solid #d30c7b;
+  outline: 2px solid $second;
 }
 
 .submit-btn {
@@ -35,15 +44,15 @@
   border: 1px solid;
   transition: 0.25s ease-in-out;
   font-weight: 600;
-  color: #3a2d32;
+  color: $main;
 }
 
 .submit-btn:hover {
   width: fit-content;
   border-radius: 3px;
   border: 1px solid;
-  background-color: #ffe3dc;
-  color: #ffe3dc;
+  background-color: $third;
+  color: $third;
 }
 
 textarea {
@@ -57,7 +66,7 @@ nav {
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  background-color: #3a2d32;
+  background-color: $main;
 }
 
 a:link,
@@ -68,11 +77,13 @@ a:visited {
 
 a:hover,
 a:active {
-  text-decoration-color: #d30c7b;
+  text-decoration-color: $second;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
 }
 
 .post {
-  border: 1px solid #ffe3dc;
+  border: 1px solid $third;
   border-radius: 3px;
   width: 30vw;
   padding: 20px;
@@ -85,7 +96,7 @@ a:active {
 }
 
 .post-name:hover {
-  color: #d30c7b;
+  color: $second;
 }
 
 .front-body {
@@ -105,13 +116,13 @@ button {
 
 .heart-on {
   text-decoration: underline;
-  color: #d30c7b;
+  color: $second;
   height: 16px;
 }
 
 .heart-off {
   text-decoration: underline;
-  color: #ffe3dc;
+  color: $third;
   height: 16px;
 }
 
@@ -128,4 +139,7 @@ button {
 
 .like-link:hover, .like-link:active {
     text-underline-offset: 1px;
+    text-decoration-thickness: 1px;
+    color: $second-transparent;
+    text-decoration-color: $second-transparent;
 }
