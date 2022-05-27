@@ -49,7 +49,7 @@ const Post = ({ post }) => {
                 <Link to={`/user/${post.user.id}`} className="post-name">{post.user.username}</Link>
                 <br /><br />
                 <div className="post-content">
-                    <p>{post.text}</p>
+                    <p className="post-text">{post.text}</p>
                     {user.id === post.user.id ? <a href="/" onClick={event => { event.preventDefault(); deletePost() }} className={"heart-on like-link"}>Delete</a> : <a href="/" onClick={event => { event.preventDefault(); toggleLike() }} className={unlike ? "heart-on like-link" : "heart-off like-link"}>{likes} Likes</a>}
                 </div>
             </div >

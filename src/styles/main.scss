@@ -130,6 +130,8 @@ button {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  text-align: justify;
+  align-items: flex-end;
 }
 
 .like-link {
@@ -142,4 +144,8 @@ button {
     text-decoration-thickness: 1px;
     color: $second-transparent;
     text-decoration-color: $second-transparent;
+}
+
+.post-text {
+  padding: 0 35px 0 0;
 }
